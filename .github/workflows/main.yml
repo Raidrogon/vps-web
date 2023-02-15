@@ -1,0 +1,24 @@
+name: Action Test
+
+on: 
+  workflow_dispatch:
+    inputs:
+      unk:
+        description: 'stub input'
+        required: false
+        default: false
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download
+      run: |
+        wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip
+        unzip ngrok-v3-stable-windows-amd64.zip
+        ngrok authtoken 1utz16uOURm1oDXkhvRaYM8fRXY_89dvRggXkZXxkAvZYLMvG
+        apt-get install tightvncserver -y
+        vncserver :1 -p 123456
+        
